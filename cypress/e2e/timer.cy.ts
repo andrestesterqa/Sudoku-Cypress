@@ -9,4 +9,18 @@ describe('Timer', () => {
       cy.contains('.status__time', `00:0${i}`);
     }
   })
-})
+
+  it.only('Shows minutes and seconds since the game started', () => {
+    cy.clock();
+    cy.visit('/');
+    cy.contains('.status__time', '00:00');
+    cy.tick(30000);
+    cy.contains('.status__time', '00:30');
+    cy.tick(30000);
+    cy.contains('.status__time', '01:00');
+    cy.tick(640000);
+    cy.contains('.status__time', '11:40');
+
+    })
+
+  })
